@@ -1,0 +1,38 @@
+<script>
+	// I want to create a game in which one competitor can eliminate another. In this case, a spaceship "race." Kind of like something from "Star Wars." But because I still don't know what I'm doing, I'm trying to build a stupidly simple race game to start with. But my code is not running
+	function Spaceship(name, speed) {
+		this.name = name;
+		// Values 0 - 9 for speed 
+		this.speed = speed;
+		this.position = 0;
+
+		this.advance = function() {
+			return this.position += this.speed;
+		}
+		this.progressReport = function() {
+			return this.name + " is at " + this.position;
+		}
+	}
+	var freighter = new Spaceship("Big Mac", 5);
+	var battleship = new Spaceship("Warhorse", 2);
+	var passengerLiner = new Spaceship("Space Duck", 7);
+	var meters = 50;
+
+	while ((freighter.position < meters && battleship.position < meters) && passengerLiner.position < meters) {
+		freighter.advance();
+		battleship.advance();
+		passengerLiner.advance();
+		alert(freighter.progressReport() + " | " + battleship.progressReport() + " | " + passengerLiner.progressReport());
+	}
+
+	if (freighter.position > battleship.position && freighter.position > passengerLiner.position) {
+		alert("Big Mac is the winner!") 
+	}
+	if (battleship.position > freighter.position && battleship.position > passengerLiner.position) {
+		alert("Warhorse is the winner!")
+	} 
+	if (passengerLiner.position > battleship.position && passengerLiner.position > battleship.position) {
+		alert("Space Duck is the winner!") 
+	}
+
+</script>
